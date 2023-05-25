@@ -1,17 +1,20 @@
-import { TasksContext } from "@/pages/tasklist";
 import { useContext, useState } from "react";
 import DeleteModal from "./DeleteModal";
+import { TasksContext } from "@/app/tasklist/page";
+import { BodyContext } from "@/app/tasklist/layout";
 
 type Task = {
   id: number;
+  index: number;
   name: string;
   completed: boolean;
 }
 
-export default function Task({ id, name, completed }: Task) {
+export default function Task({ index, id, name, completed }: Task) {
 
   const { dispatch } = useContext(TasksContext);
   const [ isOpenModal, setIsOpenModal ] = useState(false);
+  const { bodyRef } = useContext(BodyContext);
 
   const handleCompleted = async () => {
     try {
@@ -31,11 +34,12 @@ export default function Task({ id, name, completed }: Task) {
 
   const handleOpenModal = () => {
     setIsOpenModal(true);
+    bodyRef.current.style = 'overflow: hidden';
   }
   
   return (
     <ul className="flex justify-between items-center border shadow-md w-10/12 p-4 m-2 text-start">
-      <li>{id} -</li>
+      <li className="">{index + 1} -</li>
       <li className={`${completed ? ' line-through' : ''}`}>{name}</li>
       <li className="flex items-center justify-center gap-4">
         <button
@@ -54,9 +58,9 @@ export default function Task({ id, name, completed }: Task) {
           onClick={handleOpenModal}>
             Excluir
         </button>
-        {isOpenModal && (
-          <DeleteModal setIsOpenModal={setIsOpenModal} id={id}/>
-        )}
+        {isOpenModal &&
+         (<DeleteModal setIsOpenModal={setIsOpenModal} id={id}/>)
+        }
       </li>
     </ul>
   )
