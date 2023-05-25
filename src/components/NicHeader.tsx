@@ -35,7 +35,7 @@ export default function NicHeader() {
           </ul>
         </div>
         <div className="flex justify-between mb-4 ml-4">
-          <Image className="mb-2" src="/logo-nicbr.png" alt="NIC.br" width={98} height={53}/>
+          <Image className="mb-2" src="/logo-nicbr.png" alt="NIC.br" width={98} height={53} priority/>
           <div className="flex gap-0.5 items-center mr-2">
             <a href="/imprensa/" className="self-start font-bold text-sm mt-2 mr-2">IMPRENSA</a>
 
