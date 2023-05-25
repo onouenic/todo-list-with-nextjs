@@ -8,6 +8,7 @@ import tgSvg from '../../public/svg/telegram.svg';
 import liSvg from '../../public/svg/linkedin.svg';
 import igSvg from '../../public/svg/instagram.svg';
 import rssSvg from '../../public/svg/rss.svg';
+import Link from "next/link";
 
 export default function NicHeader() {
   return (
@@ -38,9 +39,9 @@ export default function NicHeader() {
           <div className="flex gap-0.5 items-center mr-2">
             <a href="/imprensa/" className="self-start font-bold text-sm mt-2 mr-2">IMPRENSA</a>
 
-            <a className="flex items-center justify-center rounded-full shadow-black/20 shadow-lg border w-8 h-8" type="button" role="button" href="https://www.youtube.com/nicbrvideos/" target="_blank">
+            <Link className="flex items-center justify-center rounded-full shadow-black/20 shadow-lg border w-8 h-8" type="button" role="button" href="https://www.youtube.com/nicbrvideos/" target="_blank">
               <Image src={ytSvg} alt="svg do Youtube" width={18} height={18} />
-            </a>
+            </Link>
             <a className="flex items-center justify-center rounded-full shadow-black/20 shadow-lg border w-8 h-8" type="button" role="button" href="https://www.twitter.com/comunicbr/" target="_blank">
               <Image src={twSvg} alt="svg do Youtube" width={16} height={16} />
             </a>
