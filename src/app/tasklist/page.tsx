@@ -1,8 +1,8 @@
+'use client'
+
 import FormTask from "@/components/FormTask";
-import NicHeader from "@/components/NicHeader";
 import Task from "@/components/Task";
 import { Dispatch, createContext, useEffect, useReducer, useState } from "react";
-import "tailwindcss/tailwind.css";
 
 /* export async function getServerSideProps(): Promise<any> {
   try {
@@ -58,18 +58,18 @@ export default function TaskList() {
       }
     }
     getTasks();
-  }, [task])
+  }, [])
 
   return (
-    <div className="mx-auto my-0 flex flex-col items-center border shadow-md h-screen w-[65%]">
-      <NicHeader />
+    <div className="flex flex-col justify-center items-center w-full h-full mb-10">
       <TasksContext.Provider value={{ dispatch, task, setTask }}>
         <FormTask />
         
         {tasks.map(
-          (task: any) =>
+          (task: any, index: number) =>
             <Task
               key={task.id}
+              index={index}
               id={task.id}
               name={task.name}
               completed={task.completed}
