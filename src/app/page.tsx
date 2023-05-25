@@ -8,5 +8,5 @@ export default function Page() {
     redirect('/tasklist');
   }, [])
 
-  return <span>loading...</span>;
+  return <span>Home</span>
 }
