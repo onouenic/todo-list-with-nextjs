@@ -14,7 +14,13 @@ import { Dispatch, createContext, useEffect, useReducer, useState } from "react"
   }
 } */
 
-function taskReducer(state: any, action: { type: any; payload: any; }) {
+interface TaskProps {
+  id: string;
+  name: string;
+  completed: boolean;
+}
+
+function taskReducer(state: TaskProps[], action: { type: string; payload: TaskProps | TaskProps[] }) {
   switch(action.type) {
     case 'FETCH_TASKS':
       return [...state, ...action.payload]
@@ -34,18 +40,25 @@ function taskReducer(state: any, action: { type: any; payload: any; }) {
   }
 }
 
-class TasksContextDto {
-  dispatch: Dispatch<{ type: any; payload: any; }> | undefined;
-  task: any;
-  setTask: any;
+type TasksContextType = {
+  dispatch: Dispatch<{ type: string; payload: TaskProps | TaskProps[]; }> | undefined;
 }
 
-export const TasksContext = createContext(TasksContextDto);
+const TasksContextProps: TasksContextType = {
+  dispatch: undefined,
+}
+
+/* class TasksContextProps {
+  dispatch: Dispatch<{ type: string; payload: TaskProps | TaskProps[]; }> | undefined;
+  task: TaskProps | undefined;
+  setTask: React.Dispatch<React.SetStateAction<TaskProps | undefined>> | undefined;
+} */
+
+export const TasksContext = createContext(TasksContextProps);
 
 export default function TaskList() {
 
   const [ tasks, dispatch ] = useReducer(taskReducer, []);
-  const [ task, setTask ] = useState({});
 
   useEffect(() => {
     const getTasks = async () => {
@@ -62,7 +75,7 @@ export default function TaskList() {
 
   return (
     <div className="flex flex-col justify-center items-center w-full h-full mb-10">
-      <TasksContext.Provider value={{ dispatch, task, setTask }}>
+      <TasksContext.Provider value={{ dispatch }}>
         <FormTask />
         
         {tasks.map(
