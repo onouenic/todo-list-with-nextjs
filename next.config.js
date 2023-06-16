@@ -4,19 +4,19 @@ const nextConfig = {
     return [
       {
         source: '/tasks',
-        destination: 'http://localhost:3001/task'
+        destination: 'http://host:port/task'
       },
       {
         source: '/create-task',
-        destination: 'http://localhost:3001/task'
+        destination: 'http://host:port/task'
       },
       {
         source: '/update-task/:id',
-        destination: 'http://localhost:3001/task/:id'
+        destination: 'http://host:port/task/:id'
       },
       {
         source: '/delete-task/:id',
-        destination: 'http://localhost:3001/task/:id'
+        destination: 'http://host:port/task/:id'
       }
     ]
   }

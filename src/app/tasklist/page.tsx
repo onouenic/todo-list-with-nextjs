@@ -4,16 +4,6 @@ import FormTask from "@/components/FormTask";
 import Task from "@/components/Task";
 import { Dispatch, createContext, useEffect, useReducer, useState } from "react";
 
-/* export async function getServerSideProps(): Promise<any> {
-  try {
-    const res = await fetch('http://localhost:3000/tasks');
-    const data = await res.json();
-    return { props: { tasks: data } }
-  } catch (error) {
-    console.log(error)
-  }
-} */
-
 interface TaskProps {
   id: string;
   name: string;
@@ -47,12 +37,6 @@ type TasksContextType = {
 const TasksContextProps: TasksContextType = {
   dispatch: undefined,
 }
-
-/* class TasksContextProps {
-  dispatch: Dispatch<{ type: string; payload: TaskProps | TaskProps[]; }> | undefined;
-  task: TaskProps | undefined;
-  setTask: React.Dispatch<React.SetStateAction<TaskProps | undefined>> | undefined;
-} */
 
 export const TasksContext = createContext(TasksContextProps);
 
